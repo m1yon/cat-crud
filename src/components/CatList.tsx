@@ -1,4 +1,5 @@
 import useCatList from "../hooks/useCatList";
+import CatListCard from "./CatListCard";
 
 const CatList = () => {
   const catListQuery = useCatList();
@@ -10,18 +11,7 @@ const CatList = () => {
   return (
     <div className="max-w-96 mx-auto mt-12">
       {catListQuery.data?.map((cat) => (
-        <div className="mb-8 text-center" key={cat.id}>
-          <img
-            className="object-cover rounded-md mb-1"
-            src={cat.url}
-            width={cat.width}
-            height={cat.height}
-          />
-
-          <p className="text-lg">
-            {cat.breeds.map((breed) => breed.name).join(", ")}
-          </p>
-        </div>
+        <CatListCard key={cat.id} cat={cat} />
       ))}
     </div>
   );

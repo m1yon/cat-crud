@@ -1,19 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import { z } from "zod";
 
-const CatListResponseSchema = z.array(
-  z.object({
-    id: z.string(),
-    url: z.string(),
-    width: z.number(),
-    height: z.number(),
-    breeds: z.array(
-      z.object({
-        name: z.string(),
-      })
-    ),
-  })
-);
+export const CatSchema = z.object({
+  id: z.string(),
+  url: z.string(),
+  width: z.number(),
+  height: z.number(),
+  breeds: z.array(
+    z.object({
+      name: z.string(),
+    })
+  ),
+});
+
+const CatListResponseSchema = z.array(CatSchema);
 
 const useCatList = () => {
   const catListQuery = useQuery({
