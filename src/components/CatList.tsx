@@ -3,14 +3,18 @@ import useCatList from "../hooks/useCatList";
 import CatListCard from "./CatListCard";
 
 const CatList = () => {
-  const catListQuery = useCatList();
+  const { data, isLoading, isError, error } = useCatList();
   const [hiddenCats, setHiddenCats] = useState<string[]>([]);
 
-  if (catListQuery.isLoading) {
+  if (isLoading) {
     return <p>loading...</p>;
   }
 
-  const cats = catListQuery.data?.filter((cat) => !hiddenCats.includes(cat.id));
+  if (isError) {
+    return <p>error: {error.message}</p>;
+  }
+
+  const cats = data?.filter((cat) => !hiddenCats.includes(cat.id));
 
   return (
     <div className="max-w-96 mx-auto mt-12">
