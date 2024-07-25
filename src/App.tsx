@@ -1,5 +1,14 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import CatList from "./components/CatList";
+
+const queryClient = new QueryClient();
+
 function App() {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <CatList />
+    </QueryClientProvider>
+  );
 }
 
 export default App;
