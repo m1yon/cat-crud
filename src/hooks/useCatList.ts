@@ -7,6 +7,11 @@ const CatListResponseSchema = z.array(
     url: z.string(),
     width: z.number(),
     height: z.number(),
+    breeds: z.array(
+      z.object({
+        name: z.string(),
+      })
+    ),
   })
 );
 

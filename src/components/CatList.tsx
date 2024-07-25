@@ -8,10 +8,19 @@ const CatList = () => {
   }
 
   return (
-    <div>
+    <div className="max-w-96 mx-auto mt-12">
       {catListQuery.data?.map((cat) => (
-        <div key={cat.id}>
-          <img src={cat.url} width={cat.width} height={cat.height} />
+        <div className="mb-8 text-center" key={cat.id}>
+          <img
+            className="object-cover rounded-md mb-1"
+            src={cat.url}
+            width={cat.width}
+            height={cat.height}
+          />
+
+          <p className="text-lg">
+            {cat.breeds.map((breed) => breed.name).join(", ")}
+          </p>
         </div>
       ))}
     </div>
